@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://ipc-backend.firebaseio.com/resultObj.json",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

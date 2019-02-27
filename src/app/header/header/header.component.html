@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="/landing" class="nav-link" routerLinkActive="active">Inicio</a>
+
+      </li>
+      <li class="nav-item">
+        <ng-template [ngIf]="authService.isAuthenticated()">
+
+          <a routerLink="/historico-indicadores-icp" class="nav-link" routerLinkActive="active">Indicadores ICP</a>
+
+        </ng-template>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+
+      <ng-template [ngIf]="authService.isAuthenticated()">
+
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="logOut()">Cerrar sesión</button>
+
+      </ng-template>
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" routerLink="/iniciar-sesion">Iniciar sesion</button>
+
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="button" routerLink="/registrarse">Registrarse</button>
+      </ng-template>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+
+<div class="container">
+        <div class="form-group">   
+    <label for="business">Registros para mostrar:  &nbsp; </label>
+
+    <select id="business" name="business" (change)="selectChanged($event)" >
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="500">500</option>
+        <option value="todos">todos</option>
+    </select>
+        </div>
+</div>
+
+<div id="chartContainer" ></div>

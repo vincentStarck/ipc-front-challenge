@@ -1,0 +1,60 @@
+
+
+<!-- alert that show message when emai alreadyt in uso-->
+
+<div class="alert alert-danger" role="alert" *ngIf="emailAlreadyInUse">
+    {{emailAlreadyInUse}} </div>
+  <!--end alert-->
+
+  <!-- alert that show message when use was create successufully-->
+
+<div class="alert alert-success" role="alert" *ngIf="userCreatedSuccessfully">
+    {{userCreatedSuccessfully}} </div>
+  <!--end alert-->
+<div class="container center">
+    <h6>Registra tu correo electrónico y una contraseña</h6>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignup()">
+
+
+      <div class="form-group">
+        <label for="email"> Correo electrónico</label>
+        <input type="email" id="email" name="email" formControlName="email" class="form-control">
+        <span *ngIf="signUpForm.controls['email'].invalid && (signUpForm.controls['email'].dirty || signUpForm.controls['email'].touched)" class="text-danger">
+            <span *ngIf="signUpForm.controls['email'].errors.required">El correo electrónico es requierido.</span>
+            <span *ngIf="signUpForm.controls['email'].errors.maxlength">La longitud es demasido grande.</span>
+            <span *ngIf="signUpForm.controls['email'].errors.email">El correo electrónico no es válido.</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="password"> Contraseña</label>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control">
+        <span *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)" class="text-danger">
+            <span *ngIf="signUpForm.controls['password'].errors.required">La contraseña es requerida.</span>
+            <span *ngIf="signUpForm.controls['password'].errors.minlength">La longitud minima debe ser de 6 carácteres.</span>
+            <span *ngIf="signUpForm.controls['password'].errors.maxlength">La longitud es demasido grande.</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+          <label for="confirmPassword"> Confirmar contraseña</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="form-control">
+          <span *ngIf="signUpForm.controls['confirmPassword'].invalid && (signUpForm.controls['confirmPassword'].dirty || signUpForm.controls['confirmPassword'].touched)" class="text-danger">
+              <span *ngIf="signUpForm.controls['confirmPassword'].errors.required">La contraseña es requerida.</span>
+              <span *ngIf="signUpForm.controls['confirmPassword'].errors.mustMatch">La contraseña no coincide.</span>
+            </span>
+        </div>
+
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" [disabled]="!signUpForm.valid">Registrarse</button>
+
+
+
+    </form>
+
+  </div>
+
+</div>
+</div>

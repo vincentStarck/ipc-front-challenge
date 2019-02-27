@@ -1,0 +1,45 @@
+
+<!-- alert to show message when authentication  din`t was successfully -->
+
+<div class="alert alert-danger" role="alert" *ngIf="messageAlerWrongPassword">
+  {{messageAlerWrongPassword}} </div>
+<!--end alert-->
+
+<!-- form to sing in-->
+<div class="container center">
+<h6>Favor de ingresar tus credenciales</h6>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+
+
+        <div class="form-group">
+          <label for="email"> Correo electrónico</label>
+          <input type="email" id="email" name="email" formControlName="email" class="form-control">
+          <span *ngIf="signInForm.controls['email'].invalid && (signInForm.controls['email'].dirty || signInForm.controls['email'].touched)" class="text-danger">
+              <span *ngIf="signInForm.controls['email'].errors.required">El correo electrónico es requierido.</span>
+              <span *ngIf="signInForm.controls['email'].errors.maxlength">La longitud es demasido grande.</span>
+              <span *ngIf="signInForm.controls['email'].errors.email">El correo electrónico no es válido.</span>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="password"> Contraseña</label>
+          <input type="password" id="password" name="password" formControlName="password" class="form-control">
+          <span *ngIf="signInForm.controls['password'].invalid && (signInForm.controls['password'].dirty || signInForm.controls['password'].touched)" class="text-danger">
+              <span *ngIf="signInForm.controls['password'].errors.required">La contraseña es requerida.</span>
+              <span *ngIf="signInForm.controls['password'].errors.minlength">La longitud minima debe ser de 6 carácteres.</span>
+              <span *ngIf="signInForm.controls['password'].errors.maxlength">La longitud es demasido grande.</span>
+          </span>
+        </div>
+
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="!signInForm.valid">Iniciar
+          session</button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+<!--End form signin-->
