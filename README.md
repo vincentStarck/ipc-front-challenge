@@ -6,4 +6,5 @@ Requesitos de SO:
 *node version >=10.x
 
 Levantar el preyecto localmente:
-*ng serve
+1 npm install
+2 ng serve
